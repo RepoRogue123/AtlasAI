@@ -1,0 +1,32 @@
+{
+  "id": "20261003-231501",
+  "created_at": 1791049501.1236458,
+  "chaos": 0.0,
+  "model": "gemini-3.8-flash",
+  "tasks": [
+    {
+      "id": "invoice_email",
+      "title": "Invoice from email -> ERP",
+      "run_id": "eval-invoice_email-478e79",
+      "passed": true,
+      "detail": "bill INV-2041 correct",
+      "agent_status": "error",
+      "verifier": null,
+      "steps": 18,
+      "retries": 3,
+      "failures": 0,
+      "cost_usd": 0.0,
+      "tokens": 0,
+      "duration_s": 156.4,
+      "injections_detected": 0,
+      "recoveries": 3
+    }
+  ],
+  "passed": 1,
+  "total": 1,
+  "success_rate": 1.0,
+  "verifier_agreement": null,
+  "avg_steps": 18.0,
+  "total_cost_usd": 0,
+  "duration_s": 157.8
+}

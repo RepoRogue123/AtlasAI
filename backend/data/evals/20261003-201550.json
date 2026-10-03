@@ -1,0 +1,32 @@
+{
+  "id": "20261003-201550",
+  "created_at": 1791038750.882672,
+  "chaos": 0.0,
+  "model": "gemini-3.8-flash",
+  "tasks": [
+    {
+      "id": "portal_invoice",
+      "title": "Vendor portal (login) -> ERP",
+      "run_id": "eval-portal_invoice-7e285e",
+      "passed": true,
+      "detail": "bill GX-5531 correct",
+      "agent_status": "success",
+      "verifier": "verified",
+      "steps": 28,
+      "retries": 9,
+      "failures": 1,
+      "cost_usd": 0.0621,
+      "tokens": 183047,
+      "duration_s": 153.8,
+      "injections_detected": 0,
+      "recoveries": 10
+    }
+  ],
+  "passed": 1,
+  "total": 1,
+  "success_rate": 1.0,
+  "verifier_agreement": 1.0,
+  "avg_steps": 28.0,
+  "total_cost_usd": 0.0621,
+  "duration_s": 156.1
+}

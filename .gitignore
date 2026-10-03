@@ -9,7 +9,7 @@ __pycache__/
 .pytest_cache/
 
 # runtime data
-backend/data/
+# backend/data/ is committed on purpose: run logs, screenshots and eval reports are the evidence cited in MASTER_DOC.md
 backend/data_test/
 backend/tests/.data/
 

@@ -1,0 +1,32 @@
+{
+  "id": "20261003-223735",
+  "created_at": 1791047255.9830585,
+  "chaos": 0.0,
+  "model": "gemini-3.8-flash",
+  "tasks": [
+    {
+      "id": "ambiguous_payment",
+      "title": "Ambiguous request -> asks the user",
+      "run_id": "eval-ambiguous_payment-ee5c6a",
+      "passed": true,
+      "detail": "INV-0077=paid, INV-0081=open, asked_user=True",
+      "agent_status": "success",
+      "verifier": "verified",
+      "steps": 7,
+      "retries": 4,
+      "failures": 0,
+      "cost_usd": 0.0,
+      "tokens": 0,
+      "duration_s": 168.5,
+      "injections_detected": 0,
+      "recoveries": 4
+    }
+  ],
+  "passed": 1,
+  "total": 1,
+  "success_rate": 1.0,
+  "verifier_agreement": 1.0,
+  "avg_steps": 7.0,
+  "total_cost_usd": 0,
+  "duration_s": 169.9
+}
