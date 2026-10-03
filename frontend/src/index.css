@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+
+  --color-ink-950: #05070c;
+  --color-ink-900: #0a0d15;
+  --color-ink-850: #0e121c;
+  --color-ink-800: #131826;
+  --color-ink-700: #1c2333;
+  --color-ink-600: #2a3247;
+  --color-ink-400: #6b7591;
+  --color-ink-300: #98a1bb;
+  --color-ink-100: #e4e8f3;
+
+  --color-signal: #f5b544;     /* agent / action */
+  --color-verified: #3ddc97;   /* success, verification */
+  --color-risk: #ff5d6c;       /* errors, security */
+  --color-human: #8b7cff;      /* human-in-the-loop */
+  --color-info: #4cc9f0;       /* observation */
+}
+
+html, body, #root { height: 100%; }
+body {
+  @apply bg-ink-950 text-ink-100 font-sans antialiased;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(245, 181, 68, 0.07), transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px, 32px 32px;
+}
+
+.panel {
+  @apply rounded-2xl border border-white/[0.07] bg-ink-900/80 backdrop-blur-xl;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 20px 40px -24px rgba(0, 0, 0, 0.6);
+}
+.panel-title {
+  @apply font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-400;
+}
+.chip {
+  @apply inline-flex items-center gap-1 rounded-md border px-1.5 py-0.5 font-mono text-[10.5px] leading-none;
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition
+         disabled:cursor-not-allowed disabled:opacity-40;
+}
+.btn-primary { @apply btn bg-signal text-ink-950 hover:brightness-110 active:brightness-95; }
+.btn-ghost { @apply btn border border-white/10 bg-white/[0.03] text-ink-100 hover:bg-white/[0.07]; }
+.btn-danger { @apply btn border border-risk/40 bg-risk/10 text-risk hover:bg-risk/20; }
+.btn-ok { @apply btn bg-verified text-ink-950 hover:brightness-110; }
+
+.scroll-thin { scrollbar-width: thin; scrollbar-color: #2a3247 transparent; }
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+.scanline::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent, rgba(245, 181, 68, 0.08), transparent);
+  animation: scan 2.4s linear infinite;
+  pointer-events: none;
+}
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(245, 181, 68, 0.5); }
+  100% { box-shadow: 0 0 0 10px rgba(245, 181, 68, 0); }
+}
+.pulse-dot { animation: pulse-ring 1.4s ease-out infinite; }

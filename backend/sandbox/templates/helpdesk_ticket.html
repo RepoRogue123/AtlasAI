@@ -1,0 +1,30 @@
+{% extends "_helpdesk_base.html" %}
+{% block title %}Helpdesk - #{{ ticket.id }}{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>#{{ ticket.id }} · {{ ticket.title }}</h1>
+  <p class="muted">Requester: {{ ticket.requester }} · Priority: {{ ticket.priority }} · Status: <span class="badge {{ ticket.status }}">{{ ticket.status }}</span></p>
+  <p>{{ ticket.description }}</p>
+</div>
+<div class="card">
+  <h2>Notes</h2>
+  {% for n in notes %}
+    <div style="border-left:3px solid #fdba74;padding-left:12px;margin-bottom:12px">
+      <pre class="body">{{ n.body }}</pre><div class="muted">{{ n.author }} · {{ n.created_at.replace('T', ' ') }}</div>
+    </div>
+  {% else %}<p class="muted">No notes yet.</p>{% endfor %}
+  <form method="post" action="/helpdesk/tickets/{{ ticket.id }}/notes">
+    <label for="note-body">Add a note</label>
+    <textarea id="note-body" name="body"></textarea>
+    <div style="margin-top:12px"><button class="btn" type="submit">Add note</button></div>
+  </form>
+</div>
+<form method="post" action="/helpdesk/tickets/{{ ticket.id }}/status" class="row">
+  {% if ticket.status == 'open' %}
+    <input type="hidden" name="status" value="closed"><button class="btn" type="submit">Close ticket</button>
+  {% else %}
+    <input type="hidden" name="status" value="open"><button class="btn secondary" type="submit">Reopen ticket</button>
+  {% endif %}
+  <a class="btn secondary" href="/helpdesk">Back to tickets</a>
+</form>
+{% endblock %}

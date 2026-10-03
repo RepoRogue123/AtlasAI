@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block accent %}#1d4ed8{% endblock %}
+{% block brand %}Northwind Mail{% endblock %}
+{% block nav %}
+<a href="/mail?folder=inbox">Inbox</a><a href="/mail?folder=drafts">Drafts</a><a href="/mail?folder=sent">Sent</a><a href="/mail/compose">Compose</a><a href="/">All apps</a>
+{% endblock %}

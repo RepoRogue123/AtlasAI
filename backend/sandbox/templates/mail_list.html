@@ -1,0 +1,28 @@
+{% extends "_mail_base.html" %}
+{% block title %}Mail - {{ folder|capitalize }}{% endblock %}
+{% block content %}
+<div class="row" style="justify-content:space-between">
+  <h1>{{ folder|capitalize }}</h1>
+  <form method="get" action="/mail" class="row" role="search">
+    <input type="hidden" name="folder" value="{{ folder }}">
+    <label for="q" style="margin:0">Search mail</label>
+    <input id="q" name="q" value="{{ q }}" style="width:240px" placeholder="Search subject, sender, body">
+    <button class="btn" type="submit">Search</button>
+  </form>
+</div>
+<table aria-label="{{ folder }} messages">
+  <thead><tr><th>From / To</th><th>Subject</th><th>Attachment</th><th>Received</th></tr></thead>
+  <tbody>
+  {% for e in emails %}
+    <tr class="{% if not e.is_read %}unread{% endif %}">
+      <td>{% if folder == 'inbox' %}{{ e.sender_name }} &lt;{{ e.sender_email }}&gt;{% else %}To: {{ e.recipient }}{% endif %}</td>
+      <td><a href="/mail/message/{{ e.id }}">{{ e.subject }}</a></td>
+      <td>{% if e.attachment %}📎 {{ e.attachment }}{% endif %}</td>
+      <td>{{ e.received_at.replace('T', ' ') }}</td>
+    </tr>
+  {% else %}
+    <tr><td colspan="4" class="muted">No messages.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

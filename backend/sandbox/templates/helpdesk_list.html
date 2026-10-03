@@ -1,0 +1,17 @@
+{% extends "_helpdesk_base.html" %}
+{% block title %}Helpdesk - Tickets{% endblock %}
+{% block content %}
+<h1>Tickets{% if status %} · {{ status }}{% endif %}</h1>
+<table aria-label="Tickets">
+  <thead><tr><th>#</th><th>Title</th><th>Requester</th><th>Priority</th><th>Status</th></tr></thead>
+  <tbody>
+  {% for t in tickets %}
+    <tr>
+      <td>#{{ t.id }}</td><td><a href="/helpdesk/tickets/{{ t.id }}">{{ t.title }}</a></td>
+      <td>{{ t.requester }}</td><td>{{ t.priority }}</td>
+      <td><span class="badge {{ t.status }}">{{ t.status }}</span></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

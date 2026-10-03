@@ -1,0 +1,16 @@
+{% extends "_mail_base.html" %}
+{% block title %}Mail - {{ email.subject }}{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>{{ email.subject }}</h1>
+  <p class="muted">From: {{ email.sender_name }} &lt;{{ email.sender_email }}&gt;<br>To: {{ email.recipient }}<br>Date: {{ email.received_at.replace('T', ' ') }}</p>
+  <pre class="body">{{ email.body }}</pre>
+  {% if email.attachment %}
+  <p><strong>Attachment:</strong> <a href="/mail/attachments/{{ email.attachment }}">📎 {{ email.attachment }}</a> (PDF)</p>
+  {% endif %}
+</div>
+<div class="row">
+  <a class="btn secondary" href="/mail?folder={{ email.folder }}">Back to {{ email.folder }}</a>
+  <a class="btn" href="/mail/compose?to={{ email.sender_email }}&subject=Re: {{ email.subject }}">Reply</a>
+</div>
+{% endblock %}

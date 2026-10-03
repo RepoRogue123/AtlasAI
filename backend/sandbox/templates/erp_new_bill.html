@@ -1,0 +1,41 @@
+{% extends "_erp_base.html" %}
+{% block title %}Ledger - New bill{% endblock %}
+{% block content %}
+<h1>Enter a new vendor bill</h1>
+{% if errors %}<div class="errors" role="alert"><strong>Could not save bill:</strong><ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul></div>{% endif %}
+<form class="card" method="post" action="/erp/bills">
+  <div class="grid2">
+    <div>
+      <label for="vendor">Vendor</label>
+      <select id="vendor" name="vendor">
+        <option value="">-- select vendor --</option>
+        {% for v in vendors %}<option value="{{ v.name }}" {% if form.vendor == v.name %}selected{% endif %}>{{ v.name }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label for="invoice_number">Vendor invoice number</label>
+      <input id="invoice_number" name="invoice_number" value="{{ form.invoice_number or '' }}">
+    </div>
+    <div>
+      <label for="amount">Amount</label>
+      <input id="amount" name="amount" value="{{ form.amount or '' }}" placeholder="0.00">
+    </div>
+    <div>
+      <label for="currency">Currency</label>
+      <select id="currency" name="currency">
+        {% for c in ['USD', 'EUR', 'INR', 'GBP'] %}<option {% if (form.currency or 'USD') == c %}selected{% endif %}>{{ c }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label for="due_date">Due date</label>
+      <input id="due_date" name="due_date" type="date" value="{{ form.due_date or '' }}">
+    </div>
+  </div>
+  <label for="notes">Notes</label>
+  <textarea id="notes" name="notes" style="min-height:70px">{{ form.notes or '' }}</textarea>
+  <div class="row" style="margin-top:16px">
+    <button class="btn" type="submit">Submit bill</button>
+    <a class="btn secondary" href="/erp/bills">Cancel</a>
+  </div>
+</form>
+{% endblock %}

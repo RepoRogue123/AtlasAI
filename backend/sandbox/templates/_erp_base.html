@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block accent %}#0f766e{% endblock %}
+{% block brand %}Ledger ERP · Accounts Payable{% endblock %}
+{% block nav %}
+<a href="/erp/bills">All bills</a><a href="/erp/bills?status=open">Open</a><a href="/erp/bills?status=overdue">Overdue</a><a href="/erp/bills/new">New bill</a><a href="/">All apps</a>
+{% endblock %}

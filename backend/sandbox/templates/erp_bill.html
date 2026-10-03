@@ -1,0 +1,22 @@
+{% extends "_erp_base.html" %}
+{% block title %}Ledger - B-{{ 1000 + bill.id }}{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Bill B-{{ 1000 + bill.id }}</h1>
+  <table aria-label="Bill details">
+    <tr><th>Vendor</th><td>{{ bill.vendor }}</td></tr>
+    <tr><th>Invoice number</th><td>{{ bill.invoice_number }}</td></tr>
+    <tr><th>Amount</th><td>{{ bill.currency }} {{ "{:,.2f}".format(bill.amount) }}</td></tr>
+    <tr><th>Due date</th><td>{{ bill.due_date }}</td></tr>
+    <tr><th>Status</th><td><span class="badge {{ bill.status }}">{{ bill.status }}</span></td></tr>
+    <tr><th>Notes</th><td>{{ bill.notes }}</td></tr>
+    <tr><th>Created</th><td>{{ bill.created_at.replace('T', ' ') }} by {{ bill.created_by }}</td></tr>
+  </table>
+</div>
+<div class="row">
+  <a class="btn secondary" href="/erp/bills">Back to bills</a>
+  {% if bill.status == 'open' %}
+  <form method="post" action="/erp/bills/{{ bill.id }}/pay"><button class="btn danger" type="submit">Mark as paid</button></form>
+  {% endif %}
+</div>
+{% endblock %}

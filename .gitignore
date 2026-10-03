@@ -1,0 +1,31 @@
+# secrets
+.env
+backend/data/vault.json
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# runtime data
+backend/data/
+backend/data_test/
+backend/tests/.data/
+
+# frontend
+frontend/node_modules/
+frontend/dist/
+
+# os / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# hiring brief (third-party document, not part of the submission code)
+CentrAlign AI*Engineering Hiring.md
+
+# local test artefacts
+backend/tests/.data/
+*.log

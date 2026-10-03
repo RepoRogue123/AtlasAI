@@ -1,0 +1,25 @@
+{% extends "_erp_base.html" %}
+{% block title %}Ledger - Bills{% endblock %}
+{% block content %}
+<div class="row" style="justify-content:space-between">
+  <h1>Vendor bills{% if status %} · {{ status }}{% endif %}{% if vendor %} · {{ vendor }}{% endif %}</h1>
+  <a class="btn" href="/erp/bills/new">+ New bill</a>
+</div>
+<table aria-label="Vendor bills">
+  <thead><tr><th>Bill</th><th>Vendor</th><th>Invoice #</th><th>Amount</th><th>Due date</th><th>Status</th></tr></thead>
+  <tbody>
+  {% for b in bills %}
+    <tr>
+      <td><a href="/erp/bills/{{ b.id }}">B-{{ 1000 + b.id }}</a></td>
+      <td>{{ b.vendor }}</td>
+      <td>{{ b.invoice_number }}</td>
+      <td>{{ b.currency }} {{ "{:,.2f}".format(b.amount) }}</td>
+      <td>{{ b.due_date }}</td>
+      <td><span class="badge {{ 'overdue' if b.overdue else b.status }}">{{ 'overdue' if b.overdue else b.status }}</span></td>
+    </tr>
+  {% else %}
+    <tr><td colspan="6" class="muted">No bills match.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

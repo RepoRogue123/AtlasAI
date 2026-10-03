@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Northwind Corp - Apps{% endblock %}
+{% block brand %}Northwind Corp · Intranet{% endblock %}
+{% block content %}
+<h1>Company applications</h1>
+<div class="grid2">
+  <div class="card"><h2><a href="/mail">Mail</a></h2><p class="muted">Shared inbox for Accounts Payable &amp; Support.</p></div>
+  <div class="card"><h2><a href="/erp/bills">Ledger ERP</a></h2><p class="muted">Accounts payable: vendor bills and payments.</p></div>
+  <div class="card"><h2><a href="/helpdesk">Helpdesk</a></h2><p class="muted">Internal support tickets.</p></div>
+  <div class="card"><h2><a href="/portal">Globex Billing Portal</a></h2><p class="muted">External vendor portal (Globex Corporation).</p></div>
+</div>
+{% endblock %}

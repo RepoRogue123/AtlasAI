@@ -1,0 +1,18 @@
+{% extends "_mail_base.html" %}
+{% block title %}Mail - Compose{% endblock %}
+{% block content %}
+<h1>New message</h1>
+{% if error %}<div class="errors" role="alert">{{ error }}</div>{% endif %}
+<form class="card" method="post" action="/mail/compose">
+  <label for="to">To</label>
+  <input id="to" name="to" value="{{ to }}" placeholder="name@example.com">
+  <label for="subject">Subject</label>
+  <input id="subject" name="subject" value="{{ subject }}">
+  <label for="body">Message</label>
+  <textarea id="body" name="body">{{ body }}</textarea>
+  <div class="row" style="margin-top:16px">
+    <button class="btn" type="submit" name="action" value="send">Send email</button>
+    <button class="btn secondary" type="submit" name="action" value="draft">Save draft</button>
+  </div>
+</form>
+{% endblock %}

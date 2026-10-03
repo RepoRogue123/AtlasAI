@@ -1,0 +1,26 @@
+{
+  "outcome": "success",
+  "evidence": [
+    "http://127.0.0.1:8001/erp/bills/7"
+  ],
+  "summary": "The latest Acme Supplies invoice (INV-2041) was downloaded, its amount (4820.50) and due date (2026-11-01) were extracted, and a new vendor bill B-1007 was created in the Ledger ERP with those details. The bill is visible in the bills list confirming successful entry.",
+  "results": [
+    {
+      "label": "invoice_number",
+      "value": "INV-2041"
+    },
+    {
+      "label": "invoice_amount",
+      "value": "4820.50"
+    },
+    {
+      "label": "invoice_due_date",
+      "value": "2026-11-01"
+    },
+    {
+      "label": "bill_id",
+      "value": "B-1007"
+    }
+  ],
+  "rationale": "All required actions completed and verified."
+}

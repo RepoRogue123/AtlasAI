@@ -1,0 +1,18 @@
+{% extends "_portal_base.html" %}
+{% block title %}Globex Portal - Invoices{% endblock %}
+{% block content %}
+<h1>Your invoices · Northwind Corp</h1>
+<table aria-label="Invoices">
+  <thead><tr><th>Invoice #</th><th>Issued</th><th>Due</th><th>Amount (USD)</th><th>Status</th><th>Document</th></tr></thead>
+  <tbody>
+  {% for i in invoices %}
+    <tr>
+      <td>{{ i.invoice_number }}</td><td>{{ i.issue_date }}</td><td>{{ i.due_date }}</td>
+      <td>{{ "{:,.2f}".format(i.amount) }}</td>
+      <td><span class="badge {{ i.status }}">{{ i.status }}</span></td>
+      <td><a href="/portal/invoices/{{ i.invoice_number }}/pdf">Download PDF</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
