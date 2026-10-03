@@ -5,7 +5,7 @@ wrong and corrected, and how far the work has come.*
 
 **Last updated:** Saturday 3 October 2026, 23:20 IST (clock-checked)
 **Maintainer:** _(to be filled in)_ · CentrAlign AI — AI Engineering Intern take-home
-**Repository:** `C:\Users\honpa\Desktop\programming\centreAlignAI` (not yet a git repository)
+**Repository:** https://github.com/RepoRogue123/AtlasAI (branch `main`; local copy `C:\Users\honpa\Desktop\programming\centreAlignAI`)
 
 ---
 
@@ -1375,6 +1375,25 @@ is added). A cheap way to unblock suite runs is that credit, or a paid Gemini ke
 ## Part 13 — Changelog
 
 *Newest first. Every development gets an entry.*
+
+### 2026-10-03 (night) — Pushed to GitHub
+
+**Why.** Submission requires a source-code link.
+
+**Done.** Repository initialised on branch `main` and pushed to https://github.com/RepoRogue123/AtlasAI. There are two
+commits, both authored by the maintainer with no co-author trailer: (1) source, tests and docs (99 files);
+(2) `backend/data` (425 files, 18 MB: `atlas.db`, run screenshots, eval reports, sandbox database, invoice PDFs),
+included at the maintainer's request because it is the evidence this document cites.
+
+Before committing, the staged files were scanned for API-key patterns (Gemini `AQ.`/`AIza`, Groq `gsk_`, OpenRouter
+`sk-or-`, xAI `xai-`) and for the excluded assistant name: none were found. Excluded on purpose: `.env`,
+`backend/.venv`, `frontend/node_modules`, `frontend/dist`, `backend/tests/.data`, the vault file and the hiring brief
+(a third-party document). `.gitattributes` keeps `*.sh` and `*.py` at LF line endings, so `run.sh` works on
+macOS/Linux.
+
+**Limits.** `atlas.db` contains the Groq organisation id inside logged rate-limit messages. It is an identifier, not
+a credential, and was left as recorded. The live server on the maintainer's machine may still run older code until
+restarted.
 
 ### 2026-10-03 (22:50–23:20) — Groq key verified; a task carried by Groq → OpenRouter; two robustness fixes from live runs
 
